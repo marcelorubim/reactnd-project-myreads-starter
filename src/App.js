@@ -3,6 +3,7 @@ import React from 'react'
 import './App.css'
 import Search from './Search'
 import Bookshelf from './Bookshelf'
+import * as BooksAPI from './BooksAPI'
 
 class BooksApp extends React.Component {
   state = {
@@ -13,6 +14,7 @@ class BooksApp extends React.Component {
      * pages, as well as provide a good URL they can bookmark and share.
      */
     showSearchPage: false,
+    books: [],
     bookShelfs: [
       { 
         key: 'currently-reading',
@@ -28,12 +30,17 @@ class BooksApp extends React.Component {
       },
     ]
   }
-
+  searchBooks = (query) => {
+    BooksAPI.search(query).then(books => this.setState({ books }))
+  }
+  componentDidMount() {
+    BooksAPI.getAll().then(books => this.setState({ books }))
+  }
   render() {
     return (
       <div className="app">
         {this.state.showSearchPage ? (
-          <Search />
+          <Search books={this.state.books} searchBooks={this.searchBooks} />
         ) : (                  
           <div className="list-books">
             <div className="list-books-title">
