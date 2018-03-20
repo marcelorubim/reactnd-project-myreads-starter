@@ -15,26 +15,24 @@ class BooksApp extends React.Component {
      */
     showSearchPage: false,
     books: [],
+    booksQuery: [],
     bookshelfs: [
       {
         id: 'currentlyReading',
         name: 'Currently Reading',
-        books: []
       },
       {
         id: 'wantToRead',
         name: 'Want to Read',
-        books: []
       },
       {
         id: 'read',
         name: 'Reead',
-        books: []
       },
     ]
   }
   searchBooks = (query) => {
-    BooksAPI.search(query).then(books => this.setState({ books }))
+    BooksAPI.search(query).then(booksQuery => this.setState({ booksQuery }))
   }
   addBook = (book,idBookshelf) => {
     const bookshelfs = this.state.bookshelfs;
@@ -47,13 +45,6 @@ class BooksApp extends React.Component {
   }
   componentDidMount() {
     BooksAPI.getAll().then(books => {
-      for(const book of books){
-        for(const bookshelf of this.state.bookshelfs){
-          if(book.shelf === bookshelf.id){
-            bookshelf.books.push(book)
-          }
-        }
-      }
       this.setState({ books })
     })
   }
@@ -61,7 +52,7 @@ class BooksApp extends React.Component {
     return (
       <div className="app">
         {this.state.showSearchPage ? (
-          <Search books={this.state.books} searchBooks={this.searchBooks} bookshelfs={this.state.bookshelfs} addBook={this.addBook} />
+          <Search books={this.state.booksQuery} searchBooks={this.searchBooks} bookshelfs={this.state.bookshelfs} addBook={this.addBook} />
         ) : (
             <div className="list-books">
               <div className="list-books-title">
@@ -69,7 +60,7 @@ class BooksApp extends React.Component {
               </div>
               <div className="list-books-content">
                 <div>
-                  {this.state.bookshelfs.map(b => <Bookshelf bookshelf={b} key={b.id} bookshelfs={this.state.bookshelfs} addBook={this.addBook} />)}
+                  {this.state.bookshelfs.map(b => <Bookshelf bookshelf={b} key={b.id} bookshelfs={this.state.bookshelfs} addBook={this.addBook} books={this.state.books} />)}
                 </div>
               </div>
               <div className="open-search">
