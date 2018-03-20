@@ -15,23 +15,35 @@ class BooksApp extends React.Component {
      */
     showSearchPage: false,
     books: [],
-    bookShelfs: [
-      { 
-        key: 'currently-reading',
-        name: 'Currently Reading'
+    bookshelfs: [
+      {
+        id: 'currently-reading',
+        name: 'Currently Reading',
+        books: []
       },
-      { 
-        key: 'want-to-read',
-        name: 'Want to Read'
+      {
+        id: 'want-to-read',
+        name: 'Want to Read',
+        books: []
       },
-      { 
-        key: 'read',
-        name: 'Reead'
+      {
+        id: 'read',
+        name: 'Reead',
+        books: []
       },
     ]
   }
   searchBooks = (query) => {
     BooksAPI.search(query).then(books => this.setState({ books }))
+  }
+  addBook = (book,idBookshelf) => {
+    const bookshelfs = this.state.bookshelfs;
+    for(const b of bookshelfs){
+      if(b.id === idBookshelf){
+        b.books.push([book]);
+      }
+    }
+    this.setState({ bookshelfs });    
   }
   componentDidMount() {
     BooksAPI.getAll().then(books => this.setState({ books }))
@@ -40,22 +52,22 @@ class BooksApp extends React.Component {
     return (
       <div className="app">
         {this.state.showSearchPage ? (
-          <Search books={this.state.books} searchBooks={this.searchBooks} />
-        ) : (                  
-          <div className="list-books">
-            <div className="list-books-title">
-              <h1>MyReads</h1>
-            </div>
-            <div className="list-books-content">
-              <div>
-                {this.state.bookShelfs.map(b => <Bookshelf bookShelf={b} key={b.key}/>)} 
+          <Search books={this.state.books} searchBooks={this.searchBooks} bookshelfs={this.state.bookshelfs} addBook={this.addBook} />
+        ) : (
+            <div className="list-books">
+              <div className="list-books-title">
+                <h1>MyReads</h1>
+              </div>
+              <div className="list-books-content">
+                <div>
+                  {this.state.bookshelfs.map(b => <Bookshelf bookshelf={b} key={b.id} bookshelfs={this.state.bookshelfs} addBook={this.addBook} />)}
+                </div>
+              </div>
+              <div className="open-search">
+                <a onClick={() => this.setState({ showSearchPage: true })}>Add a book</a>
               </div>
             </div>
-            <div className="open-search">
-              <a onClick={() => this.setState({ showSearchPage: true })}>Add a book</a>
-            </div>
-          </div>
-        )}
+          )}
       </div>
     )
   }
