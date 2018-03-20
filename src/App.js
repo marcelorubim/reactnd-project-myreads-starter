@@ -29,23 +29,20 @@ class BooksApp extends React.Component {
       },
       {
         id: 'read',
-        name: 'Reead',
+        name: 'Read',
       },
     ]
   }
   searchBooks = (query) => {
     BooksAPI.search(query).then(booksQuery => this.setState({ booksQuery }))
   }
-  addBook = (book,idBookshelf) => {
-    const bookshelfs = this.state.bookshelfs;
-    for(const b of bookshelfs){
-      if(b.id === idBookshelf){
-        b.books.push([book]);
-      }
-    }
-    this.setState({ bookshelfs });    
+  moveBook = (book,shelf) => {
+    BooksAPI.update(book,shelf).then(() => this.getAllBooks())
   }
   componentDidMount() {
+    this.getAllBooks();
+  }
+  getAllBooks(){
     BooksAPI.getAll().then(books => {
       this.setState({ books })
     })
@@ -54,7 +51,7 @@ class BooksApp extends React.Component {
     return (
       <div className="app">
        <Route path="/search" render={() => (
-          <Search books={this.state.booksQuery} searchBooks={this.searchBooks} bookshelfs={this.state.bookshelfs} addBook={this.addBook} />
+          <Search books={this.state.booksQuery} searchBooks={this.searchBooks} bookshelfs={this.state.bookshelfs} moveBook={this.moveBook} />
         )}/>
         <Route exact path="/" render={() => (
             <div className="list-books">
@@ -63,7 +60,7 @@ class BooksApp extends React.Component {
               </div>
               <div className="list-books-content">
                 <div>
-                  {this.state.bookshelfs.map(b => <Bookshelf bookshelf={b} key={b.id} bookshelfs={this.state.bookshelfs} addBook={this.addBook} books={this.state.books} />)}
+                  {this.state.bookshelfs.map(b => <Bookshelf bookshelf={b} key={b.id} bookshelfs={this.state.bookshelfs} books={this.state.books}  moveBook={this.moveBook}/>)}
                 </div>
               </div>
               <div className="open-search">

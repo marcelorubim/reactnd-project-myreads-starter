@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom'
 class Search extends Component {
     render(){
       console.log('render')
-        const { books,bookshelfs,searchBooks,addBook } = this.props
+        const { books,bookshelfs,searchBooks,moveBook } = this.props
         return (
             <div className="search-books">
             <div className="search-books-bar">
@@ -27,7 +27,7 @@ class Search extends Component {
             <div className="search-books-results">
               <ol className="books-grid">
               {books.map(book => 
-                <Book key={book.id} book={book} bookshelfs={bookshelfs} addBook={addBook}/>
+                <Book key={book.id} book={book} bookshelfs={bookshelfs} moveBook={moveBook}/>
               )}              
               </ol>
             </div>
