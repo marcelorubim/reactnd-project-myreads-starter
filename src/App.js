@@ -17,12 +17,12 @@ class BooksApp extends React.Component {
     books: [],
     bookshelfs: [
       {
-        id: 'currently-reading',
+        id: 'currentlyReading',
         name: 'Currently Reading',
         books: []
       },
       {
-        id: 'want-to-read',
+        id: 'wantToRead',
         name: 'Want to Read',
         books: []
       },
@@ -46,7 +46,16 @@ class BooksApp extends React.Component {
     this.setState({ bookshelfs });    
   }
   componentDidMount() {
-    BooksAPI.getAll().then(books => this.setState({ books }))
+    BooksAPI.getAll().then(books => {
+      for(const book of books){
+        for(const bookshelf of this.state.bookshelfs){
+          if(book.shelf === bookshelf.id){
+            bookshelf.books.push(book)
+          }
+        }
+      }
+      this.setState({ books })
+    })
   }
   render() {
     return (
