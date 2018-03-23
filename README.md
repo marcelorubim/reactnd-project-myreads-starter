@@ -7,7 +7,6 @@ This is a application to keep control of your book collection. On this you can c
 To get started cataloging right away:
 
 * start the server with `npm start`
-
 ## What You're Getting
 ```bash
 ├── CONTRIBUTING.md
