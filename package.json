@@ -1,5 +1,5 @@
 {
-  "dependencies": {    
+  "dependencies": {
     "prop-types": "^15.5.8",
     "react": "^15.5.4",
     "react-dom": "^15.5.4",
@@ -14,5 +14,19 @@
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject"
-  }
+  },
+  "name": "reactnd-project-myreads-starter",
+  "description": "This is a application to keep control of your book collection. On this you can catalog your books in three categories: Currently Reading, Want to Read and Read.",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/marcelorubim/reactnd-project-myreads-starter.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/marcelorubim/reactnd-project-myreads-starter/issues"
+  },
+  "homepage": "https://github.com/marcelorubim/reactnd-project-myreads-starter#readme"
 }

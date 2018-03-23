@@ -1,12 +1,10 @@
-import React, { Component } from 'react'
-import Book from './Book'
+import React from 'react'
 import { Link } from 'react-router-dom'
-import ReactLoading from 'react-loading';
+import PropTypes from 'prop-types';
+import BookGrid from './BookGrid'
 
-
-class Search extends Component {
-  render() {
-    const { booksQuery, searchBooks, moveBook,isLoading } = this.props
+function Search(props) {
+    const { booksQuery, searchBooks, moveBook,isLoading } = props
     return (
       <div className="search-books">
         <div className="search-books-bar">
@@ -26,17 +24,16 @@ class Search extends Component {
           </div>
         </div>
         <div className="search-books-results">
-        {(isLoading &&
-        <ReactLoading type='spin' color='green' height='50' width='50' delay='100' />) ||
-          <ol className="books-grid">
-            {booksQuery && booksQuery.map(book =>
-              <Book key={book.id} book={book} moveBook={moveBook} />
-            )}
-          </ol>
-          }
+          <BookGrid books={booksQuery} moveBook={moveBook} isLoading={isLoading} />        
         </div>
       </div>
     )
-  }
 }
 export default Search
+
+Search.propTypes = {
+  booksQuery:  PropTypes.array, 
+  searchBooks:  PropTypes.func.isRequired, 
+  moveBook: PropTypes.func.isRequired,
+  isLoading: PropTypes.bool.isRequired
+};
