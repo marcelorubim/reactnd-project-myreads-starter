@@ -1,5 +1,5 @@
 Arguments: 
-  C:\Program Files\nodejs\node.exe C:\Program Files (x86)\Yarn\bin\yarn.js start
+  C:\Program Files\nodejs\node.exe C:\Program Files (x86)\Yarn\bin\yarn.js add --dev jest babel-jest babel-preset-env babel-preset-react react-test-renderer
 
 PATH: 
   C:\ProgramData\Oracle\Java\javapath;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;F:\HashiCorp\Vagrant\bin;C:\Program Files (x86)\PuTTY\;C:\Program Files\nodejs\;C:\Program Files (x86)\Skype\Phone\;C:\Program Files\PuTTY\;C:\Program Files\Git\cmd;C:\Program Files (x86)\Yarn\bin\;C:\Users\marcelorubim\AppData\Local\atom\bin;C:\Users\marcelorubim\AppData\Roaming\npm;C:\Program Files\Heroku\bin;C:\Program Files\Microsoft VS Code\bin;C:\Python\Python36-32;C:\Python\Python36-32\Scripts;C:\Users\marcelorubim\AppData\Local\Yarn\bin
@@ -16,9 +16,11 @@ Platform:
 npm manifest: 
   {
     "dependencies": {
+      "jest": "^22.4.3",
       "prop-types": "^15.5.8",
       "react": "^15.5.4",
       "react-dom": "^15.5.4",
+      "react-loading": "^1.0.3",
       "react-router-dom": "^4.2.2"
     },
     "devDependencies": {
@@ -27,7 +29,7 @@ npm manifest:
     "scripts": {
       "start": "react-scripts start",
       "build": "react-scripts build",
-      "test": "react-scripts test --env=jsdom",
+      "test": "jest",
       "eject": "react-scripts eject"
     }
   }
@@ -39,18 +41,14 @@ Lockfile:
   No lockfile
 
 Trace: 
-  Error: Command failed.
-  Exit code: 3221225786
-  Command: C:\WINDOWS\system32\cmd.exe
-  Arguments: /d /s /c react-scripts start
-  Directory: C:\CursoReact\reactnd-project-myreads-starter
-  Output:
-  
-      at ProcessTermError.Error (native)
-      at ProcessTermError.MessageError (C:\Program Files (x86)\Yarn\lib\cli.js:186:110)
-      at new ProcessTermError (C:\Program Files (x86)\Yarn\lib\cli.js:226:113)
-      at ChildProcess.<anonymous> (C:\Program Files (x86)\Yarn\lib\cli.js:30281:17)
-      at emitTwo (events.js:106:13)
-      at ChildProcess.emit (events.js:191:7)
-      at maybeClose (internal/child_process.js:920:16)
-      at Process.ChildProcess._handle.onexit (internal/child_process.js:230:5)
+  Error: https://registry.yarnpkg.com/caniuse-lite/-/caniuse-lite-1.0.30000819.tgz: ESOCKETTIMEDOUT
+      at ClientRequest.<anonymous> (C:\Program Files (x86)\Yarn\lib\cli.js:133061:19)
+      at ClientRequest.g (events.js:292:16)
+      at emitNone (events.js:86:13)
+      at ClientRequest.emit (events.js:185:7)
+      at TLSSocket.emitTimeout (_http_client.js:630:10)
+      at TLSSocket.g (events.js:292:16)
+      at emitNone (events.js:86:13)
+      at TLSSocket.emit (events.js:185:7)
+      at TLSSocket.Socket._onTimeout (net.js:338:8)
+      at ontimeout (timers.js:386:11)

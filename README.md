@@ -1,15 +1,12 @@
-# MyReads Project
+# MyReads Application
 
-This is the starter template for the final assessment project for Udacity's React Fundamentals course. The goal of this template is to save you time by providing a static example of the CSS and HTML markup that may be used, but without any of the React code that is needed to complete the project. If you choose to start with this template, your job will be to add interactivity to the app by refactoring the static code in this template.
-
-Of course, you are free to start this project from scratch if you wish! Just be sure to use [Create React App](https://github.com/facebookincubator/create-react-app) to bootstrap the project.
+This is a application to keep control of your book collection. On this you can catalog your books in three categories: Currently Reading, Want to Read and Read.
 
 ## TL;DR
 
-To get started developing right away:
+To get started cataloging right away:
 
-* install all project dependencies with `npm install`
-* start the development server with `npm start`
+* start the server with `npm start`
 
 ## What You're Getting
 ```bash
@@ -24,7 +21,10 @@ To get started developing right away:
     ├── App.css # Styles for your app. Feel free to customize this as you desire.
     ├── App.js # This is the root of your app. Contains static HTML right now.
     ├── App.test.js # Used for testing. Provided with Create React App. Testing is encouraged, but not required.
+    ├── Book.js # A React Component that represent the books on the application.
     ├── BooksAPI.js # A JavaScript API for the provided Udacity backend. Instructions for the methods are below.
+    ├── Bookshelf.js # A React Component that represent the bookshelf on the application.
+    ├── Search.js # A React Component for the Search Page on the application.
     ├── icons # Helpful images for your app. Use at your discretion.
     │   ├── add.svg
     │   ├── arrow-back.svg
