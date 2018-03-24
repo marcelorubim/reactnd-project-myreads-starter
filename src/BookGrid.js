@@ -1,6 +1,8 @@
 import React from 'react'
 import Loading from './Loading'
 import Book from './Book'
+import PropTypes from 'prop-types';
+
 
 function BookGrid(props) {
   const { isLoading, books,moveBook } = props
@@ -13,3 +15,8 @@ function BookGrid(props) {
 }
 
 export default BookGrid
+BookGrid.propTypes = {
+  books: PropTypes.array.isRequired,
+  moveBook: PropTypes.func.isRequired,
+  isLoading: PropTypes.bool.isRequired
+}
