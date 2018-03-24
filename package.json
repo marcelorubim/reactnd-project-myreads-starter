@@ -15,6 +15,9 @@
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject"
   },
+  "jest": {
+    "setupFiles": ["./__test__/setupTests.js"]
+  },
   "name": "reactnd-project-myreads-starter",
   "description": "This is a application to keep control of your book collection. On this you can catalog your books in three categories: Currently Reading, Want to Read and Read.",
   "version": "1.0.0",
@@ -29,4 +32,5 @@
     "url": "https://github.com/marcelorubim/reactnd-project-myreads-starter/issues"
   },
   "homepage": "https://github.com/marcelorubim/reactnd-project-myreads-starter#readme"
+ 
 }
