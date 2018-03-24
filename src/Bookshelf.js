@@ -9,7 +9,7 @@ function Bookshelf(props) {
       <div className="bookshelf">
         <h2 className="bookshelf-title">{bookshelf.name}</h2>
         <div className="bookshelf-books">
-          <BookGrid books={books.filter(book => book.shelf === bookshelf.id)} moveBook={moveBook} isLoading={isLoading} />
+          <BookGrid books={books} moveBook={moveBook} isLoading={isLoading} />
         </div>
       </div>
     )

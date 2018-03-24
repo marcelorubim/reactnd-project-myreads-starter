@@ -39,13 +39,12 @@ class BooksApp extends React.Component {
     this.showHideLoading();
     BooksAPI.search(query).then((booksQuery) => {
       this.showHideLoading();
-      Array.isArray(booksQuery) ? this.setState({ booksQuery }) : this.setState({ booksQuery: [] })
+      Array.isArray(booksQuery) ? this.setState({ booksQuery: booksQuery.map(book => this.state.books.filter(bookQuery => book.id === bookQuery.id).length>0 ? this.state.books.filter(bookQuery => book.id === bookQuery.id)[0] : {...book,shelf:'none'})}) : this.setState({ booksQuery: [] })
     });
   }
 
   moveBook = (book, shelf) => {
     BooksAPI.update(book, shelf).then(() => {
-      this.setState({books:[]})
       this.getAllBooks()
     }
     )
@@ -76,7 +75,7 @@ class BooksApp extends React.Component {
             </div>
             <div className="list-books-content">
               <div>
-                {this.state.bookshelfs.map(b => <Bookshelf bookshelf={b} key={b.id} bookshelfs={this.state.bookshelfs} books={this.state.books} moveBook={this.moveBook} isLoading={this.state.isLoading} />)}
+                {this.state.bookshelfs.map(b => <Bookshelf bookshelf={b} key={b.id} bookshelfs={this.state.bookshelfs.filter} books={this.state.books.filter(book => book.shelf === b.id)} moveBook={this.moveBook} isLoading={this.state.isLoading} />)}
               </div>
             </div>
             <div className="open-search">

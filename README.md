@@ -1,7 +1,7 @@
 # MyReads Application
 
 This is a application to keep control of your book collection. On this you can catalog your books in three categories: Currently Reading, Want to Read and Read.
-
+You can search the book on the plus button on the bottom. After finding the book you want, click on button on the bottom right of the book cover and choose the category you want to put the book. 
 ## TL;DR
 
 To get started cataloging right away:
@@ -22,6 +22,7 @@ To get started cataloging right away:
     ├── App.test.js # Used for testing. Provided with Create React App. Testing is encouraged, but not required.
     ├── Book.js # A React Component that represent the books on the application.
     ├── BooksAPI.js # A JavaScript API for the provided Udacity backend. Instructions for the methods are below.
+    ├── BookGrid.js # A React Component that represent a grid with books on the application.
     ├── Bookshelf.js # A React Component that represent the bookshelf on the application.
     ├── Search.js # A React Component for the Search Page on the application.
     ├── icons # Helpful images for your app. Use at your discretion.
@@ -86,6 +87,6 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 ## Contributing
 
-This repository is the starter code for _all_ Udacity students. Therefore, we most likely will not accept pull requests.
+This repository is based on the starter code provided by Udacity.
 
 For details, check out [CONTRIBUTING.md](CONTRIBUTING.md).
